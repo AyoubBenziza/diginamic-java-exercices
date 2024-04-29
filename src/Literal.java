@@ -1,14 +1,17 @@
-public class DeclarationApp {
+public class Literal {
     public static void main(String[] args) {
         System.out.println("---- Literal ----");
 
+        // Byte
         byte value_byte = 56;
 
+        // Short
         short value_short = 358;
 
-        // Int (limité à 2.1 milliards - mettre un L aux littéraux entiers au delà de 2.1 milliards)
+        // Int (limité à 2.1 milliards)
         int value_int = 19824;
 
+        // Long - mettre un L aux littéraux entiers au delà de 2.1 milliards)
         long value_long = 2200000000L;
 
         // Float
@@ -25,6 +28,7 @@ public class DeclarationApp {
         // Boolean
         boolean state = true;
 
+        // String
         String hello = "Hello World";
 
         // Hiérarchie : double > float > long > int > short > byte
