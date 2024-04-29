@@ -32,13 +32,13 @@ public class Array {
         String[] cities = {"Montpellier", "Paris", "Poitiers", "Nantes", "Nîmes"};
 
         // Affichage
-        for (int i = 0; i < cities.length; i++) {
-            System.out.println("Ville:\n" + cities[i]);
+        for (int i = 1; i <= cities.length; i++) {
+            System.out.println("Ville n°" + i + ": " + cities[i - 1]);
         }
         System.out.println("Longueur du tableau cities:\n" + cities.length);
         cities[3] = "Reims";
-        for (int i = 0; i < cities.length; i++) {
-            System.out.println("Ville:\n" + cities[i]);
+        for (int i = 1; i <= cities.length; i++) {
+            System.out.println("Ville n°" + i + ": " + cities[i - 1]);
         }
 
     }
