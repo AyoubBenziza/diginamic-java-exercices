@@ -8,6 +8,7 @@ public class AccountRate extends Account {
         this.remunerationRate = remunerationRate;
     }
 
+    @Override
     public String toString() {
         return super.toString() + " Rémunération: " + this.remunerationRate;
     }
