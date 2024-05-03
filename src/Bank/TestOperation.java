@@ -16,16 +16,13 @@ public class TestOperation {
                 new Debit(new Date(), 325),
         };
 
-        int globalAmount = 0;
+        double total = 0.0;
+
         for (int i = 0; i < arrayOperation.length; i++) {
-            System.out.println("Opération n°" + (i + 1) + ":\n Date: " + arrayOperation[i].date + "\n Amount:" + arrayOperation[i].amount + "\nType: " + arrayOperation[i].getType());
-            if ((arrayOperation[i].getType().equals("CREDIT"))) {
-                globalAmount = globalAmount + arrayOperation[i].amount;
-            } else {
-                globalAmount = globalAmount - arrayOperation[i].amount;
-            }
+            System.out.println("Opération n°" + (i + 1) + ":\n Date: " + arrayOperation[i].getDate() + "\n Amount:" + arrayOperation[i].getAmount() + "\nType: " + arrayOperation[i].getType());
+            total = arrayOperation[i].calculTotal(total);
         }
         System.out.println(Arrays.toString(arrayOperation));
-        System.out.println("Montant Global des opérations: " + globalAmount);
+        System.out.println("Montant Global des opérations: " + total);
     }
 }

@@ -10,4 +10,8 @@ public class Credit extends Operation {
     public String getType() {
         return "CREDIT";
     }
+
+    public double calculTotal(double total) {
+        return total + getAmount();
+    }
 }

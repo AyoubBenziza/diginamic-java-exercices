@@ -10,4 +10,8 @@ public class Debit extends Operation {
     public String getType() {
         return "DEBIT";
     }
+
+    public double calculTotal(double total) {
+        return total - getAmount();
+    }
 }
