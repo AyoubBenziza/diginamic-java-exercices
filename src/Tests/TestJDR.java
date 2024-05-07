@@ -1,10 +1,10 @@
 package Tests;
 
-import JDR.Player;
+import JDR.Game;
 
 public class TestJDR {
     public static void main(String[] args) {
-        System.out.println("Welcome to the JDR game!");
-        Player player = new Player("Player");
+        Game game = new Game();
+        game.start();
     }
 }

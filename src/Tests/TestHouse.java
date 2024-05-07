@@ -32,10 +32,10 @@ public class TestHouse {
         System.out.println("Rooms: " + Arrays.toString(house.getRooms()));
 
         System.out.println("--- Area by Room Type ---");
-        System.out.println("Area by Bedroom: " + house.getAreaByRoomType(Bedroom.class));
-        System.out.println("Area by WC: " + house.getAreaByRoomType(WC.class));
-        System.out.println("Count by Bedroom: " + house.getRoomCountByType(Bedroom.class));
-        System.out.println("Count by Kitchen: " + house.getRoomCountByType(Kitchen.class));
+        System.out.println("Area by Bedroom: " + house.getAreaByRoomType(bedroom));
+        System.out.println("Area by WC: " + house.getAreaByRoomType(wc));
+        System.out.println("Count by Bedroom: " + house.getRoomCountByType(bedroom));
+        System.out.println("Count by Kitchen: " + house.getRoomCountByType(kitchen));
         System.out.println("------ Test House ------");
     }
 }

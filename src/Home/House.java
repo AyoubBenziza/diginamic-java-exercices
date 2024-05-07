@@ -45,20 +45,20 @@ public class House {
         rooms = newRooms;
     }
 
-    public double getAreaByRoomType(Class roomType) {
+    public double getAreaByRoomType(Room roomReference) {
         double area = 0;
         for (Room room : rooms) {
-            if (roomType.isInstance(room)) {
+            if (roomReference.getClass().isInstance(room)) {
                 area += room.area;
             }
         }
         return area;
     }
 
-    public int getRoomCountByType(Class roomType) {
+    public int getRoomCountByType(Room roomReference) {
         int count = 0;
         for (Room room : rooms) {
-            if (roomType.isInstance(room)) {
+            if (roomReference.getClass().isInstance(room)) {
                 count++;
             }
         }
