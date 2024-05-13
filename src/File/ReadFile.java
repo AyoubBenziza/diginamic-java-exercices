@@ -1,6 +1,8 @@
 package File;
 
 
+import Utils.ExportToCSV;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -14,7 +16,7 @@ import java.util.stream.Collectors;
 public class ReadFile {
     static final String COMMA_DELIMITER = ";";
     static final String dataPath = "src/Data/recensement.csv";
-    static final String outputPath = "src/Data/cities.csv";
+    static final String outputPath = "src/File/Data/cities.csv";
 
     public static void main(String[] args) {
         System.out.println("------ ReadFile ------");
@@ -40,12 +42,14 @@ public class ReadFile {
             List<City> filteredCities = cities.stream().filter((c) -> c.getPopulation() > 25000)
                     .collect(Collectors.toList());
 
-            List<String> csvLines = filteredCities.stream()
-                    .map(city -> city.getName() + ";" + city.getDepartment() + ";" + city.getRegion() + ";"
-                            + city.getPopulation())
-                    .collect(Collectors.toList());
+//            List<String> csvLines = filteredCities.stream()
+//                    .map(city -> city.getName() + ";" + city.getDepartment() + ";" + city.getRegion() + ";"
+//                            + city.getPopulation())
+//                    .collect(Collectors.toList());
 
-            Files.write(Paths.get(outputPath), csvLines);
+            new ExportToCSV(filteredCities, outputPath);
+
+//            Files.write(Paths.get(outputPath), csvLines);
             System.out.println("File created: " + outputPath);
 
         } catch (IOException e) {

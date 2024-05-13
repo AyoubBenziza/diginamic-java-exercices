@@ -1,9 +1,18 @@
 package File;
 
+import Annotations.CSV;
+
 public class City {
+    @CSV(column = "Ville", order = 2, separator = ";")
     private final String name;
+
+    @CSV(column = "Departement", order = 1, separator = ";")
     private final String department;
+
+    @CSV(column = "Region", order = 4, separator = ";")
     private final String region;
+
+    @CSV(column = "Population", order = 3, separator = ";")
     private final int population;
 
     public City(String name, String department, String region, int population) {
