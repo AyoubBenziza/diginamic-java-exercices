@@ -44,6 +44,27 @@ public class TestCity {
         System.out.println("Cities: " + cities);
         System.out.println("--- Uppercase name with population > 100000 ---");
 
+        System.out.println("--- Equals ---");
+        City city1 = new City("Nice", 343_000);
+        City city2 = new City("Nice", 343_000);
+        City city3 = new City("Montpellier", 302_454);
+        System.out.println("city1: " + city1);
+        System.out.println("city2: " + city2);
+        System.out.println("city3: " + city3);
+
+        System.out.println("With equals method");
+        System.out.println("city1.equals(city2): " + city1.equals(city2));
+        System.out.println("city1.equals(city3): " + city1.equals(city3));
+
+        System.out.println("With == operator");
+        System.out.println("city1 == city2: " + (city1 == city2)); // Doesn't work because it compares references
+        System.out.println("city1 == city3: " + (city1 == city3));
+
+        city2 = city1;
+        System.out.println("After city2 = city1");
+        System.out.println("city1 == city2: " + (city1 == city2));
+        System.out.println("--- Equals ---");
+
         System.out.println("------ TestCity ------");
     }
 }

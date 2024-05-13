@@ -14,4 +14,13 @@ public class City {
         return name + " (" + population + ")";
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof City) {
+            City city = (City) obj;
+            return name.equals(city.name) && population == city.population;
+        }
+        return false;
+    }
+
 }
