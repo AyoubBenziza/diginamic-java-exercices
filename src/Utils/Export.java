@@ -11,9 +11,9 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public class ExportToCSV {
+public class Export {
 
-    public ExportToCSV(List<?> list, String path) {
+    public static void toCSV(List<?> list, String path, char separator) {
 
         try {
             // Get the class of the first object in the list
@@ -31,7 +31,7 @@ public class ExportToCSV {
             StringBuilder header = new StringBuilder();
             fields.forEach(field -> {
                 CSV annotation = field.getAnnotation(CSV.class);
-                header.append(annotation.column()).append(annotation.separator());
+                header.append(annotation.columnName()).append(separator);
             });
             lines.add(header.toString());
 
@@ -41,7 +41,7 @@ public class ExportToCSV {
                 fields.forEach(field -> {
                     field.setAccessible(true);
                     try {
-                        lineBuilder.append(field.get(object)).append(field.getAnnotation(CSV.class).separator());
+                        lineBuilder.append(field.get(object)).append(separator);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

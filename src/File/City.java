@@ -3,16 +3,16 @@ package File;
 import Annotations.CSV;
 
 public class City {
-    @CSV(column = "Ville", order = 2, separator = ";")
+    @CSV(columnName = "Ville", order = 2)
     private final String name;
 
-    @CSV(column = "Departement", order = 1, separator = ";")
+    @CSV(columnName = "Departement", order = 1)
     private final String department;
 
-    @CSV(column = "Region", order = 4, separator = ";")
+    @CSV(columnName = "Region", order = 4)
     private final String region;
 
-    @CSV(column = "Population", order = 3, separator = ";")
+    @CSV(columnName = "Population", order = 3)
     private final int population;
 
     public City(String name, String department, String region, int population) {

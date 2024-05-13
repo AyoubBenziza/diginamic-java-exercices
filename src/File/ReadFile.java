@@ -1,15 +1,12 @@
 package File;
 
 
-import Utils.ExportToCSV;
+import Utils.Export;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,14 +39,8 @@ public class ReadFile {
             List<City> filteredCities = cities.stream().filter((c) -> c.getPopulation() > 25000)
                     .collect(Collectors.toList());
 
-//            List<String> csvLines = filteredCities.stream()
-//                    .map(city -> city.getName() + ";" + city.getDepartment() + ";" + city.getRegion() + ";"
-//                            + city.getPopulation())
-//                    .collect(Collectors.toList());
+            Export.toCSV(filteredCities, outputPath, ';');
 
-            new ExportToCSV(filteredCities, outputPath);
-
-//            Files.write(Paths.get(outputPath), csvLines);
             System.out.println("File created: " + outputPath);
 
         } catch (IOException e) {
