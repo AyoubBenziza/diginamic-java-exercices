@@ -3,12 +3,15 @@ package Automates;
 public class GameOfTheLife {
     private int[][] grid;
     private int[][] newGrid;
-    private final int size;
+    private final int width;
+    private final int height;
+    private int generations = 0;
 
-    public GameOfTheLife(int size) {
-        this.size = size;
-        this.grid = new int[size][size];
-        this.newGrid = new int[size][size];
+    public GameOfTheLife(int width, int height) {
+        this.width = width;
+        this.height = height;
+        this.grid = new int[height][width];
+        this.newGrid = new int[height][width];
     }
 
     public void setCell(int x, int y) {
@@ -16,8 +19,8 @@ public class GameOfTheLife {
     }
 
     public void nextGeneration() {
-        for (int i = 0; i < this.size; i++) {
-            for (int j = 0; j < this.size; j++) {
+        for (int i = 0; i < this.height; i++) {
+            for (int j = 0; j < this.width; j++) {
                 int neighbors = countNeighbors(i, j);
                 if (this.grid[i][j] == 1) {
                     if (neighbors < 2 || neighbors > 3) {
@@ -34,28 +37,43 @@ public class GameOfTheLife {
                 }
             }
         }
+
+        // Move the cells towards the end in width direction
+        for (int i = 0; i < this.height; i++) {
+            for (int j = this.width - 1; j > 0; j--) {
+                this.grid[i][j] = this.grid[i][j - 1];
+            }
+        }
+
+        // Generate new cells in the first column
+        for (int i = 0; i < this.height; i++) {
+            this.grid[i][0] = Math.random() < 0.5 ? 0 : 1;
+        }
+
         this.grid = this.newGrid;
-        this.newGrid = new int[this.size][this.size];
+        this.newGrid = new int[this.height][this.width]; // Corrected line
     }
 
     private int countNeighbors(int x, int y) {
         int count = 0;
-        for (int i = x - 1; i <= x + 1; i++) {
-            for (int j = y - 1; j <= y + 1; j++) {
-                if (i >= 0 && i < this.size && j >= 0 && j < this.size) {
-                    if (i != x || j != y) {
-                        count += this.grid[i][j];
-                    }
-                }
+        for (int i = Math.max(0, x - 1); i <= Math.min(x + 1, height - 1); i++) {
+            for (int j = Math.max(0, y - 1); j <= Math.min(y + 1, width - 1); j++) {
+                count += this.grid[i][j];
             }
         }
-        return count;
+        return count - this.grid[x][y];
     }
 
     public void printGrid() {
-        for (int i = 0; i < this.size; i++) {
-            for (int j = 0; j < this.size; j++) {
-                System.out.print(this.grid[i][j] + " ");
+        this.generations++;
+        System.out.println();
+        System.out.println("/".repeat(this.width / 2) + " Génération : " + this.generations + " " + "\\".repeat(this.width / 2));
+        for (int i = 0; i < this.height; i++) {
+            System.out.println("-".repeat(this.width * 2 + 1));
+            System.out.print("|");
+            for (int j = 0; j < this.width; j++) {
+                System.out.print(this.grid[i][j] == 1 ? "*" : " ");
+                System.out.print("|");
             }
             System.out.println();
         }
