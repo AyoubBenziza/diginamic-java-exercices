@@ -1,6 +1,8 @@
+package Lessons;
+
 public class Literal {
     public static void main(String[] args) {
-        System.out.println("---- Literal ----");
+        System.out.println("---- Lessons.Literal ----");
 
         // Byte
         byte value_byte = 56;

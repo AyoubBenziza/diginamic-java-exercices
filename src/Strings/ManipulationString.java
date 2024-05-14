@@ -23,7 +23,7 @@ public class ManipulationString {
         System.out.println("Last name in LowerCase: " + lastName.toLowerCase());
 
         String[] parts = string.split(";");
-        System.out.println("Array: " + Arrays.toString(parts));
+        System.out.println("Lessons.Array: " + Arrays.toString(parts));
 
         System.out.println("--- Employee ---");
         Employee employee = new Employee(parts[0], parts[1], Double.parseDouble(parts[2].replace(" ", "")));

@@ -2,5 +2,5 @@
 
 ## Summary
 
-- Literal
-- Array
+- Lessons.Literal
+- Lessons.Array

@@ -1,6 +1,8 @@
+package Lessons;
+
 public class Loop {
     public static void main(String[] args) {
-        System.out.println("---- Loop ----");
+        System.out.println("---- Lessons.Loop ----");
 
         // Afficher tous les nombres de 1 à 10
         System.out.println("-- Nombres de 1 à 10 --");
@@ -32,7 +34,7 @@ public class Loop {
         }
         System.out.println("-----------------------");
 
-        System.out.println("-- Array --");
+        System.out.println("-- Lessons.Array --");
         int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
         // Afficher le premier élément du tableau
@@ -44,7 +46,7 @@ public class Loop {
         // Afficher le dernier élément du tableau en utilisant length
         System.out.println("Premier élément du tableau numbers:\n" + numbers[numbers.length - 1]);
 
-        System.out.println("-- Loop Tests --");
+        System.out.println("-- Lessons.Loop Tests --");
 
         int[] array = {1, 15, -3, 0, 8, 7, 4, -2, 28, 7, -1, 17, 2, 3, 0, 14, -4};
         // Affichage du tableau
