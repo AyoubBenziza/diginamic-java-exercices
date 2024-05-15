@@ -43,8 +43,7 @@ public class Region implements Comparable<Region> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Region region = (Region) o;
+        if (!(o instanceof Region region)) return false;
         return codeRegion == region.codeRegion;
     }
 

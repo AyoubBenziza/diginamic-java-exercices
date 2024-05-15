@@ -43,8 +43,7 @@ public class Departement implements Comparable<Departement> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Departement departement = (Departement) o;
+        if (!(o instanceof Departement departement)) return false;
         return codeDepartement.equals(departement.codeDepartement);
     }
 

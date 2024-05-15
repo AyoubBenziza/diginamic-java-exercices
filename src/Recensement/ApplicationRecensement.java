@@ -12,7 +12,9 @@ public class ApplicationRecensement {
         Recensement recensement = new Recensement();
         recensement.lireFichier("src/Data/recensement.csv");
         recensement.afficherDonnees();
-        menu(recensement);
+        do {
+            menu(recensement);
+        } while (recensement != null);
         System.out.println("------ TP Recensement ------");
     }
 
@@ -37,42 +39,42 @@ public class ApplicationRecensement {
             case 1:
                 RecherchePopulationVille recherchePopulationVille = new RecherchePopulationVille();
                 recherchePopulationVille.traiter(recensement, scannerInput);
-                menu(recensement);
+                break;
             case 2:
                 RecherchePopulationDepartement recherchePopulationDepartement = new RecherchePopulationDepartement();
                 recherchePopulationDepartement.traiter(recensement, scannerInput);
-                menu(recensement);
+                break;
             case 3:
                 RecherchePopulationRegion recherchePopulationRegion = new RecherchePopulationRegion();
                 recherchePopulationRegion.traiter(recensement, scannerInput);
-                menu(recensement);
+                break;
             case 4:
                 RechercheRegionPlusPeuplee rechercheRegionPlusPeuplee = new RechercheRegionPlusPeuplee();
                 rechercheRegionPlusPeuplee.traiter(recensement, scannerInput);
-                menu(recensement);
+                break;
             case 5:
                 RechercheDepartementPlusPeuplee rechercheDepartementPlusPeuplee = new RechercheDepartementPlusPeuplee();
                 rechercheDepartementPlusPeuplee.traiter(recensement, scannerInput);
-                menu(recensement);
+                break;
             case 6:
                 RechercheVillesPlusPeupleeDepartement rechercheVillesPlusPeupleeDepartement = new RechercheVillesPlusPeupleeDepartement();
                 rechercheVillesPlusPeupleeDepartement.traiter(recensement, scannerInput);
-                menu(recensement);
+                break;
             case 7:
                 RechercheVillesPlusPeupleeRegion rechercheVillesPlusPeupleeRegion = new RechercheVillesPlusPeupleeRegion();
                 rechercheVillesPlusPeupleeRegion.traiter(recensement, scannerInput);
-                menu(recensement);
+                break;
             case 8:
                 RechercheVillesPlusPeuplee rechercheVillesPlusPeuplee = new RechercheVillesPlusPeuplee();
                 rechercheVillesPlusPeuplee.traiter(recensement, scannerInput);
-                menu(recensement);
+                break;
             case 9:
                 System.out.println("Sortir");
                 scanner.close();
                 System.exit(0);
             default:
                 System.out.println("Option invalide");
-                menu(recensement);
+                break;
         }
     }
 }
