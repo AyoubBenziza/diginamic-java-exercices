@@ -1,8 +1,8 @@
 package Dates;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class TestCalendar {
     public static void main(String[] args) {
@@ -15,13 +15,13 @@ public class TestCalendar {
 
         System.out.println("--- Languages ---");
         // The day and month of today in chinese
-        System.out.println("Today in chinese: " + today.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, new java.util.Locale("zh", "CN")) + " " + today.get(Calendar.DAY_OF_MONTH) + " " + today.getDisplayName(Calendar.MONTH, Calendar.LONG, new java.util.Locale("zh", "CN")));
+        System.out.println("Today in chinese: " + today.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, new Locale("zh", "CN")) + " " + today.get(Calendar.DAY_OF_MONTH) + " " + today.getDisplayName(Calendar.MONTH, Calendar.LONG, new Locale("zh", "CN")));
         // In french
-        System.out.println("Today in french: " + today.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, new java.util.Locale("fr", "FR")) + " " + today.get(Calendar.DAY_OF_MONTH) + " " + today.getDisplayName(Calendar.MONTH, Calendar.LONG, new java.util.Locale("fr", "FR")));
+        System.out.println("Today in french: " + today.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, new Locale("fr", "FR")) + " " + today.get(Calendar.DAY_OF_MONTH) + " " + today.getDisplayName(Calendar.MONTH, Calendar.LONG, new Locale("fr", "FR")));
         // In german
-        System.out.println("Today in german: " + today.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, new java.util.Locale("de", "DE")) + " " + today.get(Calendar.DAY_OF_MONTH) + " " + today.getDisplayName(Calendar.MONTH, Calendar.LONG, new java.util.Locale("de", "DE")));
+        System.out.println("Today in german: " + today.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, new Locale("de", "DE")) + " " + today.get(Calendar.DAY_OF_MONTH) + " " + today.getDisplayName(Calendar.MONTH, Calendar.LONG, new Locale("de", "DE")));
         // In russian
-        System.out.println("Today in russian: " + today.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, new java.util.Locale("ru", "RU")) + " " + today.get(Calendar.DAY_OF_MONTH) + " " + today.getDisplayName(Calendar.MONTH, Calendar.LONG, new java.util.Locale("ru", "RU")));
+        System.out.println("Today in russian: " + today.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, new Locale("ru", "RU")) + " " + today.get(Calendar.DAY_OF_MONTH) + " " + today.getDisplayName(Calendar.MONTH, Calendar.LONG, new Locale("ru", "RU")));
         System.out.println("--- Languages ---");
         System.out.println("------ Test Calendar ------");
     }
