@@ -44,7 +44,7 @@ public class Departement implements Comparable<Departement> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Departement departement)) return false;
-        return codeDepartement.equals(departement.codeDepartement);
+        return Objects.equals(codeDepartement, departement.codeDepartement);
     }
 
     @Override

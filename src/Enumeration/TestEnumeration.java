@@ -14,6 +14,7 @@ public class TestEnumeration {
         // Display an instance of the season of the label "Winter"
         String label = "Winter";
         Season season = Season.valueOfLabel(label);
+        assert season != null;
         System.out.println("Season with label \"" + label + "\": " + season.label);
         System.out.println("------ Test Season Enumeration ------");
     }
