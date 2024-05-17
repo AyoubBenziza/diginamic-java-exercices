@@ -37,13 +37,13 @@ public class City {
 
     @Override
     public String toString() {
-        return name + " (" + population + "), " + continent.label;
+        return name + " (" + population + "), " + continent.getLabel();
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof City city) {
-            return name.equals(city.name) && population == city.population;
+            return name.equals(city.name) && population == city.population && continent.equals(city.continent);
         }
         return false;
     }
