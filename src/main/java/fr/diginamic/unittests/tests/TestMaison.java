@@ -12,6 +12,8 @@ import org.junit.BeforeClass;
 import org.junit.AfterClass;
 import org.junit.rules.TestName;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
@@ -42,20 +44,13 @@ public class TestMaison {
     }
 
     @Test
-    public void Maison() {
+    public void MaisonAjouterPiece() {
         Maison maison = new Maison();
         maison.ajouterPiece(new Chambre(1, 10));
         maison.ajouterPiece(new Chambre(1, 20));
         maison.ajouterPiece(new Cuisine(0, 30));
-        System.out.println("Surface de la maison: " + maison.calculerSurface());
         System.out.println("Nombre de pièces de la maison: " + maison.nbPieces());
         assertEquals(3, 0.01, maison.nbPieces());
-        assertEquals(60.0, 0.01, maison.calculerSurface());
-    }
-
-    @Test
-    public void MaisonNull() {
-        Maison maison = new Maison();
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
                 maison.ajouterPiece(null)
         );
@@ -65,5 +60,73 @@ public class TestMaison {
 
         System.err.println("Exception levée: " + actualMessage);
         assertEquals(actualMessage, expectedMessage);
+    }
+
+    @Test
+    public void MaisonCalculerSurface() {
+        Maison maison = new Maison();
+        maison.ajouterPiece(new Chambre(1, 10));
+        maison.ajouterPiece(new Chambre(1, 20));
+        maison.ajouterPiece(new Cuisine(0, 30));
+        System.out.println("Surface de la maison: " + maison.calculerSurface());
+        assertEquals(60.0, 0.01, maison.calculerSurface());
+    }
+
+    @Test
+    public void MaisonNbPieces() {
+        Maison maison = new Maison();
+        maison.ajouterPiece(new Chambre(1, 10));
+        maison.ajouterPiece(new Chambre(1, 20));
+        maison.ajouterPiece(new Cuisine(0, 30));
+        System.out.println("Nombre de pièces de la maison: " + maison.nbPieces());
+        assertEquals(3, 0.01, maison.nbPieces());
+    }
+
+    @Test
+    public void MaisonSuperficieEtage() {
+        Maison maison = new Maison();
+        maison.ajouterPiece(new Chambre(1, 10));
+        maison.ajouterPiece(new Chambre(1, 20));
+        maison.ajouterPiece(new Cuisine(0, 30));
+        System.out.println("Superficie de l'étage 1: " + maison.superficieEtage(1));
+        assertEquals(30.0, 0.01, maison.superficieEtage(1));
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                maison.superficieEtage(-1)
+        );
+
+        String expectedMessage = "L'étage doit être positif";
+        String actualMessage = exception.getMessage();
+
+        System.err.println("Exception levée: " + actualMessage);
+        assertEquals(actualMessage, expectedMessage);
+    }
+
+    @Test
+    public void MaisonSuperficieTypePiece() {
+        Maison maison = new Maison();
+        maison.ajouterPiece(new Chambre(1, 10));
+        maison.ajouterPiece(new Chambre(1, 20));
+        maison.ajouterPiece(new Cuisine(0, 30));
+        System.out.println("Superficie des chambres: " + maison.superficieTypePiece("Chambre"));
+        assertEquals(30.0, 0.01, maison.superficieTypePiece("Chambre"));
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                maison.superficieTypePiece(null)
+        );
+
+        String expectedMessage = "Le type de pièce ne peut pas être null ou vide";
+        String actualMessage = exception.getMessage();
+
+        System.err.println("Exception levée: " + actualMessage);
+        assertEquals(actualMessage, expectedMessage);
+    }
+
+    @Test
+    public void MaisonGetPieces() {
+        Maison maison = new Maison();
+        maison.ajouterPiece(new Chambre(1, 10));
+        maison.ajouterPiece(new Chambre(1, 20));
+        maison.ajouterPiece(new Cuisine(0, 30));
+        System.out.println("Pièces de la maison: " + Arrays.toString(maison.getPieces()));
+        assertEquals(3, maison.getPieces().length);
     }
 }

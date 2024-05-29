@@ -8,7 +8,7 @@ package fr.diginamic.unittests.immobilier.entites;
 public class Maison {
 
     /**
-     * pieces : tableau de pièces de la maison
+     * Pieces : tableau de pièces de la maison
      */
     private Piece[] pieces;
 
@@ -36,13 +36,11 @@ public class Maison {
         // d'une nouvelle pièce
 
         // On commence donc par créer un tableau temporaire appelé newTab
-        // qui a une taille égale à la tableau du tableau pieces+1
+        // qui a une taille égale à la longueur du tableau pieces+1
         Piece[] newTab = new Piece[pieces.length + 1];
 
         // On déverse toutes les pièces du tableau pieces dans newTab
-        for (int i = 0; i < pieces.length; i++) {
-            newTab[i] = pieces[i];
-        }
+        System.arraycopy(pieces, 0, newTab, 0, pieces.length);
 
         // On place en dernière position dans le nouveau tableau la nouvelle
         // pièce
@@ -63,11 +61,14 @@ public class Maison {
      * @return double
      */
     public double superficieEtage(int choixEtage) {
+        if (choixEtage < 0) {
+            throw new IllegalArgumentException("L'étage doit être positif");
+        }
         double superficieEtage = 0;
 
-        for (int i = 0; i < pieces.length; i++) {
-            if (choixEtage == this.pieces[i].getNumEtage()) {
-                superficieEtage = this.pieces[i].getSuperficie();
+        for (Piece piece : pieces) {
+            if (choixEtage == piece.getNumEtage()) {
+                superficieEtage = superficieEtage + piece.getSuperficie();
             }
         }
 
@@ -75,17 +76,20 @@ public class Maison {
     }
 
     /**
-     * Retourne la superficie total pour un type de pièce donné
+     * Retourne la superficie totale pour un type de pièce donné
      *
      * @param typePiece type de pièce
      * @return double
      */
     public double superficieTypePiece(String typePiece) {
+        if (typePiece == null || typePiece.isEmpty()) {
+            throw new IllegalArgumentException("Le type de pièce ne peut pas être null ou vide");
+        }
         double superficie = 0;
 
-        for (int i = 0; i < pieces.length; i++) {
-            if (typePiece != null && typePiece.equals(this.pieces[i].getType())) {
-                superficie = superficie + this.pieces[i].getSuperficie();
+        for (Piece piece : pieces) {
+            if (typePiece.equals(piece.getType())) {
+                superficie = superficie + piece.getSuperficie();
             }
         }
 
@@ -100,8 +104,8 @@ public class Maison {
     public double calculerSurface() {
         double superficieTot = 0;
 
-        for (int i = 0; i < pieces.length; i++) {
-            superficieTot = superficieTot + this.pieces[i].getSuperficie();
+        for (Piece piece : pieces) {
+            superficieTot = superficieTot + piece.getSuperficie();
         }
 
         return superficieTot;
