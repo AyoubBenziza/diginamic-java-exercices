@@ -2,23 +2,43 @@ package fr.diginamic.props.dao.jdbc;
 
 import fr.diginamic.props.dao.GenericDao;
 import fr.diginamic.props.entities.Fournisseur;
+import fr.diginamic.props.services.DatabaseService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class FournisseurDaoJdbc implements GenericDao<Fournisseur> {
+    private static final ResourceBundle config = ResourceBundle.getBundle("application");
+
+    private Connection connection;
+
+    public FournisseurDaoJdbc() {
+        try {
+            Class.forName(config.getString("db.driver"));
+            connection = DatabaseService.getConnectionPool().getConnection();
+            System.out.println("Connexion à la base de données établie !");
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
 
     @Override
-    public void insert(Connection connection, Fournisseur fournisseur) {
+    public void insert(Fournisseur fournisseur) {
         try {
             String sql = "INSERT INTO FOURNISSEUR (NOM) VALUES (?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             // Set the value for the placeholder
-            preparedStatement.setString(1, fournisseur.getNom());
+            preparedStatement.setString(1, fournisseur.nom());
 
             int rowsAffected = preparedStatement.executeUpdate();
 
@@ -31,13 +51,13 @@ public class FournisseurDaoJdbc implements GenericDao<Fournisseur> {
     }
 
     @Override
-    public void update(Connection connection, String ancienNom, String nouveauNom) {
+    public void update(Fournisseur fournisseur, String ancienNom) {
         try {
             String sql = "UPDATE FOURNISSEUR SET NOM = ? WHERE NOM = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             // Set the values for the placeholders
-            preparedStatement.setString(1, nouveauNom);
+            preparedStatement.setString(1, fournisseur.nom());
             preparedStatement.setString(2, ancienNom);
 
             int rowsAffected = preparedStatement.executeUpdate();
@@ -51,13 +71,13 @@ public class FournisseurDaoJdbc implements GenericDao<Fournisseur> {
     }
 
     @Override
-    public void delete(Connection connection, Fournisseur fournisseur) {
+    public void delete(Fournisseur fournisseur) {
         try {
             String sql = "DELETE FROM FOURNISSEUR WHERE NOM = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             // Set the value for the placeholder
-            preparedStatement.setString(1, fournisseur.getNom());
+            preparedStatement.setString(1, fournisseur.nom());
 
             int rowsAffected = preparedStatement.executeUpdate();
 
@@ -72,7 +92,7 @@ public class FournisseurDaoJdbc implements GenericDao<Fournisseur> {
     }
 
     @Override
-    public List<Fournisseur> extraire(Connection connection) {
+    public List<Fournisseur> extraire() {
         List<Fournisseur> fournisseurs = new ArrayList<>();
 
         try {
@@ -96,7 +116,7 @@ public class FournisseurDaoJdbc implements GenericDao<Fournisseur> {
     }
 
     @Override
-    public Fournisseur extraireParNom(Connection connection, String nom) {
+    public Fournisseur extraireParNom(String nom) {
         Fournisseur fournisseur = null;
 
         try {

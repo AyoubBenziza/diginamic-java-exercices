@@ -5,13 +5,15 @@ import java.util.List;
 
 public interface GenericDao<T> {
 
-    void insert(Connection connection, T object);
+    Connection getConnection();
 
-    void update(Connection connection, String ancienNom, String nouveauNom);
+    void insert(T object);
 
-    void delete(Connection connection, T object);
+    void update(T object, String ancienNom);
 
-    List<T> extraire(Connection connection);
+    void delete(T object);
 
-    T extraireParNom(Connection connection, String nom);
+    List<T> extraire();
+
+    T extraireParNom(String nom);
 }
